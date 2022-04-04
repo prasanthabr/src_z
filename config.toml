@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://netzap.in/"
 languageCode = "en-us"
 title = "prasanthabr"
 paginate = 11 # Number of posts to show before paginating
