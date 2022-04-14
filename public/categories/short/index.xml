@@ -1,0 +1,34 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <docs>https://blogs.law.harvard.edu/tech/rss</docs>
+    <title>short on prasanthabr</title>
+    <link>https://netzap.in/categories/short/</link>
+    <description>Recent content in short on prasanthabr</description>
+    <image>
+      <title>short on prasanthabr</title>
+      <link>https://netzap.in/categories/short/</link>
+      <url>https://source.unsplash.com/collection/983219/2000x1322</url>
+    </image>
+    <ttl>1440</ttl>
+    <generator>Hugo 0.83.1</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; prasanthabr. Licensed under CC-BY-SA-4.0.</copyright>
+    <lastBuildDate>Thu, 14 Apr 2022 23:51:04 UT</lastBuildDate>
+    <atom:link href="https://netzap.in/categories/short/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Loopy Find</title>
+      <link>https://netzap.in/short/loopy-find/</link>
+      <pubDate>Thu, 14 Apr 2022 23:23:53 UT</pubDate>
+      <guid>https://netzap.in/short/loopy-find/</guid>
+      <description>backgroundThis is a custom scripts to recursively filter records similar to an index on a CSV.Though the script, then filters down to a series of results that do have the matching result.Mechanism This is pretty basic, with a couple of functions doing the heavy lift.
+First the code, creates a map of the find key and recursive results that match that key. This is admittedly inefficient, but been done for cases where the key does not exist as the first available value.</description>
+      <category domain="https://netzap.in/categories/short">Short</category>
+      <content:encoded><![CDATA[ backgroundThis is a custom scripts to recursively filter records similar to an index on a CSV.Though the script, then filters down to a series of results that do have the matching result.Mechanism This is pretty basic, with a couple of functions doing the heavy lift.
+First the code, creates a map of the find key and recursive results that match that key. This is admittedly inefficient, but been done for cases where the key does not exist as the first available value. will think about a better algo to make this more efficient.
+The matching key is being bled into an array, which is then used to filter out the map.
+The final results are then set into a 2x2 array and printed into a CSV.
+Learnings How do I transpose the CSV? How do we split out the reading of the file, without entering an infinite loop this should be easy, and just needs some thought
+package main import ( &amp;#34;encoding/csv&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;io&amp;#34; &amp;#34;log&amp;#34; &amp;#34;os&amp;#34; &amp;#34;sort&amp;#34; ) func main() { programmap(&amp;#34;ace.csv&amp;#34;, &amp;#34;AK1305&amp;#34;, 1, 0) } func programmap(file string, prog string, course int, student int) { var header []string cxmap := make(map[string][]string) //map of student 	var stds []string cxfinal := [][]string{} count := 0 csvFile, err := os.Open(file) if err != nil { log.Fatal(err) } f := csv.NewReader(csvFile) for { if count &amp;gt; 50000 { break } record, err := f.Read() if err == io.EOF { break } count&#43;&#43; if err != nil { log.Fatal(err) } if header == nil { header = record continue } cxmap[record[student]] = append(cxmap[record[student]], record[course]) if record[course] == prog { stds = append(stds, record[student]) fmt.Println(cxmap[record[student]]) } } sort.Strings(stds) for _, v := range stds { temp := make([]string, 0) temp = append(temp, v) sort.Strings(cxmap[v]) temp = append(temp, cxmap[v]...) cxfinal = append(cxfinal, [][]string{temp}...) } writecsv(cxfinal) } func writecsv(rows [][]string) { csvfile, err := os.Create(&amp;#34;test.csv&amp;#34;) if err != nil { log.Fatalf(&amp;#34;failed creating file: %s&amp;#34;, err) } csvwriter := csv.NewWriter(csvfile) for _, row := range rows { _ = csvwriter.Write(row) } csvwriter.Flush() csvfile.Close() } ]]></content:encoded>
+    </item>
+  </channel>
+</rss>

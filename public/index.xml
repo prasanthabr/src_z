@@ -1,0 +1,56 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <docs>https://blogs.law.harvard.edu/tech/rss</docs>
+    <title>prasanthabr</title>
+    <link>https://netzap.in/</link>
+    <description>Recent content on prasanthabr</description>
+    <image>
+      <title>prasanthabr</title>
+      <link>https://netzap.in/</link>
+      <url>https://source.unsplash.com/collection/983219/2000x1322</url>
+    </image>
+    <ttl>1440</ttl>
+    <generator>Hugo 0.83.1</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; prasanthabr. Licensed under CC-BY-SA-4.0.</copyright>
+    <lastBuildDate>Thu, 14 Apr 2022 23:51:04 UT</lastBuildDate>
+    <atom:link href="https://netzap.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shortcuts</title>
+      <link>https://netzap.in/short/</link>
+      <guid>https://netzap.in/short/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://netzap.in/about/</link>
+      <pubDate>Mon, 04 Apr 2022 10:12:45 UT</pubDate>
+      <guid>https://netzap.in/about/</guid>
+      <description>Out of Office; will update when am back.</description>
+      <content:encoded><![CDATA[Out of Office; will update when am back.
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Ideas</title>
+      <link>https://netzap.in/z/</link>
+      <guid>https://netzap.in/z/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    <item>
+      <title>random posts</title>
+      <link>https://netzap.in/post/</link>
+      <guid>https://netzap.in/post/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    <item>
+      <title>Search me!</title>
+      <link>https://netzap.in/search/</link>
+      <guid>https://netzap.in/search/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+  </channel>
+</rss>

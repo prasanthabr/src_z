@@ -1,7 +1,7 @@
 +++
 noindex = true
-title = "Ideas worth capturing"
-description = "a set of thoughts and ideas"
+title = "Ideas"
+description = "brain dump to shift through"
 [schema]
   type = "z"
 +++
