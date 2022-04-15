@@ -13,7 +13,7 @@
     <generator>Hugo 0.83.1</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; prasanthabr. Licensed under CC-BY-SA-4.0.</copyright>
-    <lastBuildDate>Thu, 14 Apr 2022 23:51:04 UT</lastBuildDate>
+    <lastBuildDate>Fri, 15 Apr 2022 00:36:43 UT</lastBuildDate>
     <atom:link href="https://netzap.in/categories/short/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Loopy Find</title>
@@ -27,7 +27,12 @@ First the code, creates a map of the find key and recursive results that match t
 First the code, creates a map of the find key and recursive results that match that key. This is admittedly inefficient, but been done for cases where the key does not exist as the first available value. will think about a better algo to make this more efficient.
 The matching key is being bled into an array, which is then used to filter out the map.
 The final results are then set into a 2x2 array and printed into a CSV.
-Learnings How do I transpose the CSV? How do we split out the reading of the file, without entering an infinite loop this should be easy, and just needs some thought
+Visualization Scenario: Find all values that the key which has Value C has and present.
+   Column 0 Imagine this is our key Column 1 Imagine this is our value Column 2 Column 3     Keys 1 Value A Other Data 1 Other Data 2   Keys 2 Value B Other Data 1 Other Data 2   Keys 3 Value C &amp;laquo; Other Data 1 Other Data 2   Keys 1 Value A Other Data 1 Other Data 2   Keys 2 Value D Other Data 1 Other Data 2   Keys 3 Value A &amp;laquo; Other Data 1 Other Data 2   Keys 4 Value C &amp;laquo;&amp;laquo; Other Data 1 Other Data 2    Here, the two keys that have Value C are Keys 3 and Keys 4
+Keys 3 has another value Value A, while Keys 4 has no other values
+This would result in the following output
+   Key Value1 Value2     Keys 3 Value C Value A   Keys 4 Value C     Learnings How do I transpose the CSV?
+How do we split out the reading of the file, without entering an infinite loop this should be easy, and just needs some thought
 package main import ( &amp;#34;encoding/csv&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;io&amp;#34; &amp;#34;log&amp;#34; &amp;#34;os&amp;#34; &amp;#34;sort&amp;#34; ) func main() { programmap(&amp;#34;ace.csv&amp;#34;, &amp;#34;AK1305&amp;#34;, 1, 0) } func programmap(file string, prog string, course int, student int) { var header []string cxmap := make(map[string][]string) //map of student 	var stds []string cxfinal := [][]string{} count := 0 csvFile, err := os.Open(file) if err != nil { log.Fatal(err) } f := csv.NewReader(csvFile) for { if count &amp;gt; 50000 { break } record, err := f.Read() if err == io.EOF { break } count&#43;&#43; if err != nil { log.Fatal(err) } if header == nil { header = record continue } cxmap[record[student]] = append(cxmap[record[student]], record[course]) if record[course] == prog { stds = append(stds, record[student]) fmt.Println(cxmap[record[student]]) } } sort.Strings(stds) for _, v := range stds { temp := make([]string, 0) temp = append(temp, v) sort.Strings(cxmap[v]) temp = append(temp, cxmap[v]...) cxfinal = append(cxfinal, [][]string{temp}...) } writecsv(cxfinal) } func writecsv(rows [][]string) { csvfile, err := os.Create(&amp;#34;test.csv&amp;#34;) if err != nil { log.Fatalf(&amp;#34;failed creating file: %s&amp;#34;, err) } csvwriter := csv.NewWriter(csvfile) for _, row := range rows { _ = csvwriter.Write(row) } csvwriter.Flush() csvfile.Close() } ]]></content:encoded>
     </item>
   </channel>

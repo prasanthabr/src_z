@@ -32,9 +32,33 @@ The matching key is being bled into an array, which is then used to filter out t
 
 The final results are then set into a 2x2 array and printed into a CSV.
 
+## Visualization
+
+Scenario: Find all values that the key which has Value C has and present.
+
+| Column 0 <br> Imagine this is our key | Column 1 <br> Imagine this is our value | Column 2     | Column 3     |
+| ------------------------------------- | --------------------------------------- | ------------ | ------------ |
+| Keys 1                                | Value A                                 | Other Data 1 | Other Data 2 |
+| Keys 2                                | Value B                                 | Other Data 1 | Other Data 2 |
+| Keys 3                                | Value C **<<**                          | Other Data 1 | Other Data 2 |
+| Keys 1                                | Value A                                 | Other Data 1 | Other Data 2 |
+| Keys 2                                | Value D                                 | Other Data 1 | Other Data 2 |
+| Keys 3                                | Value A **<<**                          | Other Data 1 | Other Data 2 |
+| Keys 4                                | Value C **<<<<**                        | Other Data 1 | Other Data 2 |
+
+Here, the two keys that have Value C are Keys 3 and Keys 4  
+Keys 3 has another value Value A, while Keys 4 has no other values
+
+This would result in the following output
+
+| Key    | Value1  | Value2  |
+| ------ | ------- | ------- |
+| Keys 3 | Value C | Value A |
+| Keys 4 | Value C |         |
+
 # Learnings
 
-How do I transpose the CSV?
+How do I transpose the CSV?  
 How do we split out the reading of the file, without entering an infinite loop _this should be easy, and just needs some thought_
 
 ```go

@@ -218,7 +218,7 @@ a[itemprop="url"]:hover {
     <meta itemprop="name" content="Loopy Find">
 <meta itemprop="description" content="simple script build to find a keyset based on results which we want to target"><meta itemprop="datePublished" content="2022-04-15T11:23:53&#43;12:00" />
 <meta itemprop="dateModified" content="2022-04-15T11:23:53&#43;12:00" />
-<meta itemprop="wordCount" content="339"><meta itemprop="image" content="https://source.unsplash.com/collection/983219/1600x900">
+<meta itemprop="wordCount" content="493"><meta itemprop="image" content="https://source.unsplash.com/collection/983219/1600x900">
 <meta itemprop="keywords" content="go,csv,recursive," />
     <header>
       <h1 itemprop="headline name">Loopy Find</h1>
@@ -227,7 +227,7 @@ a[itemprop="url"]:hover {
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
-<span>2 minute read</span>
+<span>3 minute read</span>
 <svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
 </svg>
@@ -249,7 +249,11 @@ a[itemprop="url"]:hover {
     <summary>Table of Contents</summary>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#mechanism">Mechanism</a></li>
+    <li><a href="#mechanism">Mechanism</a>
+      <ul>
+        <li><a href="#visualization">Visualization</a></li>
+      </ul>
+    </li>
     <li><a href="#learnings">Learnings</a></li>
   </ul>
 </nav>
@@ -278,8 +282,88 @@ Though the script, then filters down to a series of results that do have the mat
 <p>First the code, creates a map of the find key and recursive results that match that key. This is admittedly inefficient, but been done for cases where the key does not exist as the first available value. <em>will think about a better algo to make this more efficient.</em></p>
 <p>The matching key is being bled into an array, which is then used to filter out the map.</p>
 <p>The final results are then set into a 2x2 array and printed into a CSV.</p>
+<h2 id="visualization">Visualization</h2>
+<p>Scenario: Find all values that the key which has Value C has and present.</p>
+<table>
+<thead>
+<tr>
+<th>Column 0 <br> Imagine this is our key</th>
+<th>Column 1 <br> Imagine this is our value</th>
+<th>Column 2</th>
+<th>Column 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keys 1</td>
+<td>Value A</td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+<tr>
+<td>Keys 2</td>
+<td>Value B</td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+<tr>
+<td>Keys 3</td>
+<td>Value C <strong>&laquo;</strong></td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+<tr>
+<td>Keys 1</td>
+<td>Value A</td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+<tr>
+<td>Keys 2</td>
+<td>Value D</td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+<tr>
+<td>Keys 3</td>
+<td>Value A <strong>&laquo;</strong></td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+<tr>
+<td>Keys 4</td>
+<td>Value C <strong>&laquo;&laquo;</strong></td>
+<td>Other Data 1</td>
+<td>Other Data 2</td>
+</tr>
+</tbody>
+</table>
+<p>Here, the two keys that have Value C are Keys 3 and Keys 4<br>
+Keys 3 has another value Value A, while Keys 4 has no other values</p>
+<p>This would result in the following output</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value1</th>
+<th>Value2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keys 3</td>
+<td>Value C</td>
+<td>Value A</td>
+</tr>
+<tr>
+<td>Keys 4</td>
+<td>Value C</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h1 id="learnings">Learnings</h1>
-<p>How do I transpose the CSV?
+<p>How do I transpose the CSV?<br>
 How do we split out the reading of the file, without entering an infinite loop <em>this should be easy, and just needs some thought</em></p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
@@ -394,7 +478,7 @@ How do we split out the reading of the file, without entering an infinite loop <
   
     and tagged <a rel="tag" href="/tags/csv/">csv</a>, <a rel="tag" href="/tags/go/">go</a> and <a rel="tag" href="/tags/recursive/">recursive</a>
   
-  using <span itemprop="wordCount">339</span> words.
+  using <span itemprop="wordCount">493</span> words.
 </p>
 
       
