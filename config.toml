@@ -34,6 +34,14 @@ sectionPagesMenu = "main" # Enable menu system for lazy bloggers
 [params.layout.menu.main]
   hidden = false # Optional, set false or remove to show section menu
 
+
+
+[params.layout.home]
+
+  hide_blog = false
+
+
+
 [params.layout.footer]
   hidden = false # Optional, set true to hide footer
 
