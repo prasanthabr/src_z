@@ -2,7 +2,7 @@
 title = "Apex Intro"
 date = 2022-04-15T14:10:47+12:00
 description = "Introduction to SF"
-draft = true
+draft = false
 toc = false
 categories = ["Salesforce"]
 tags = ["Apex", "Design"]

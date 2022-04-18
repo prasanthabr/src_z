@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <docs>https://blogs.law.harvard.edu/tech/rss</docs>
-    <title>Search me! on prasanthabr</title>
-    <link>https://netzap.in/search/</link>
-    <description>Recent content in Search me! on prasanthabr</description>
+    <title>sf on prasanthabr</title>
+    <link>https://netzap.in/sf/</link>
+    <description>Recent content in sf on prasanthabr</description>
     <image>
-      <title>Search me! on prasanthabr</title>
-      <link>https://netzap.in/search/</link>
+      <title>sf on prasanthabr</title>
+      <link>https://netzap.in/sf/</link>
       <url>https://source.unsplash.com/collection/983219/2000x1322</url>
     </image>
     <ttl>1440</ttl>
@@ -14,6 +14,6 @@
     <language>en-us</language>
     <copyright>Copyright &amp;copy; prasanthabr. Licensed under CC-BY-SA-4.0.</copyright>
     <lastBuildDate>Sun, 17 Apr 2022 03:23:23 UT</lastBuildDate>
-    <atom:link href="https://netzap.in/search/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://netzap.in/sf/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

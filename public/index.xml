@@ -13,14 +13,15 @@
     <generator>Hugo 0.83.1</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; prasanthabr. Licensed under CC-BY-SA-4.0.</copyright>
-    <lastBuildDate>Fri, 15 Apr 2022 00:36:43 UT</lastBuildDate>
+    <lastBuildDate>Sun, 17 Apr 2022 03:23:23 UT</lastBuildDate>
     <atom:link href="https://netzap.in/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>shortcuts</title>
       <link>https://netzap.in/short/</link>
       <guid>https://netzap.in/short/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
+      <description>Oye!</description>
+      <content:encoded><![CDATA[Oye!
+]]></content:encoded>
     </item>
     <item>
       <title>About</title>
@@ -51,6 +52,14 @@
       <guid>https://netzap.in/search/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    <item>
+      <title>sf</title>
+      <link>https://netzap.in/sf/</link>
+      <guid>https://netzap.in/sf/</guid>
+      <description>the plan is to make topics, provide references and write thoughts out leading to short notes that can be read.</description>
+      <content:encoded><![CDATA[the plan is to make topics, provide references and write thoughts out leading to short notes that can be read.
+]]></content:encoded>
     </item>
   </channel>
 </rss>
