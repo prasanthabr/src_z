@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <docs>https://blogs.law.harvard.edu/tech/rss</docs>
-    <title>sf on prasanthabr</title>
-    <link>https://netzap.in/sf/</link>
-    <description>Recent content in sf on prasanthabr</description>
+    <title>Salesforce on prasanthabr</title>
+    <link>https://netzap.in/categories/salesforce/</link>
+    <description>Recent content in Salesforce on prasanthabr</description>
     <image>
-      <title>sf on prasanthabr</title>
-      <link>https://netzap.in/sf/</link>
+      <title>Salesforce on prasanthabr</title>
+      <link>https://netzap.in/categories/salesforce/</link>
       <url>https://source.unsplash.com/collection/983219/2000x1322</url>
     </image>
     <ttl>1440</ttl>
@@ -14,7 +14,7 @@
     <language>en-us</language>
     <copyright>Copyright &amp;copy; prasanthabr. Licensed under CC-BY-SA-4.0.</copyright>
     <lastBuildDate>Sun, 15 May 2022 01:28:45 UT</lastBuildDate>
-    <atom:link href="https://netzap.in/sf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://netzap.in/categories/salesforce/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using a Custom iterator on a Batch</title>
       <link>https://netzap.in/sf/custom-iterator/</link>

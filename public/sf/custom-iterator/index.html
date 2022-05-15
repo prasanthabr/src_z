@@ -10,31 +10,29 @@
     <meta name="generator" content="After Dark Hugo">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ideas | prasanthabr</title>
-    <meta name="description" content="brain dump to shift through">
-    <meta name="keywords" content="salesforce, short, shortcuts, ">
+    <title>Using a Custom iterator on a Batch | prasanthabr</title>
+    <meta name="description" content="What I figured from writing a Custom Iterator for a Batch Job">
+    <meta name="keywords" content="Apex, Batch Class, Custom Iterator">
     
     
     
-    
-      <meta name="robots" content="noindex">
     
     <base href="https://netzap.in/" />
-    <meta property="og:title" content="Ideas" />
-<meta property="og:description" content="brain dump to shift through" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://netzap.in/z/" /><meta property="og:image" content="https://source.unsplash.com/collection/983219/2000x1322"/>
+    <meta property="og:title" content="Using a Custom iterator on a Batch" />
+<meta property="og:description" content="What I figured from writing a Custom Iterator for a Batch Job" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://netzap.in/sf/custom-iterator/" /><meta property="og:image" content="https://source.unsplash.com/collection/983219/1600x900" /><meta property="article:section" content="sf" />
+<meta property="article:published_time" content="2022-05-14T10:49:09&#43;12:00" />
+<meta property="article:modified_time" content="2022-05-14T10:49:09&#43;12:00" />
 
 
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://source.unsplash.com/collection/983219/2000x1322"/>
+<meta name="twitter:image" content="https://source.unsplash.com/collection/983219/1600x900"/>
 
-<meta name="twitter:title" content="Ideas"/>
-<meta name="twitter:description" content="brain dump to shift through"/>
+<meta name="twitter:title" content="Using a Custom iterator on a Batch"/>
+<meta name="twitter:description" content="What I figured from writing a Custom Iterator for a Batch Job"/>
 
     
-
-  <meta property="og:image" content="https://source.unsplash.com/collection/983219/2000x1322">
 
 
 
@@ -47,6 +45,14 @@
 
 
     
+    
+      <script type="module">
+        import fetchInject from '\/js\/modules\/fetch-inject.min.js';
+        fetchInject(['\/css\/syntax.css']);
+      </script>
+      <noscript>
+        <link href="/css/syntax.css" rel="stylesheet">
+      </noscript>
     
     
     <script type="module" integrity="sha512-KuzOBk0/VXarS8eWptIBLl7XKY4LKXHH0qh1lbA&#43;GOMtxjEdalBvN27XCDqrJMB9Em3kcnYiI1DMhFohbVRHTg==">import fetchInject from '/js/modules/fetch-inject.min.js';
@@ -70,9 +76,7 @@ fetchInject(['/js/lazysizes.min.js']);
 
 
     
-      <link rel="alternate" type="application/rss+xml" href="https://netzap.in/z/index.xml" title="prasanthabr">
-    
-    <link rel="canonical" href="https://netzap.in/z/">
+    <link rel="canonical" href="https://netzap.in/sf/custom-iterator/">
     
     
     <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
@@ -188,7 +192,7 @@ a[itemprop="url"]:hover {
     
       
       
-        <a itemprop="url" class="active" href="/z/">Zzz</a>
+        <a itemprop="url" href="/z/">Zzz</a>
       
     
       
@@ -198,7 +202,7 @@ a[itemprop="url"]:hover {
     
       
       
-        <a itemprop="url" href="/sf/">sf</a>
+        <a itemprop="url" class="active" href="/sf/">sf</a>
       
     
   </nav>
@@ -210,26 +214,187 @@ a[itemprop="url"]:hover {
 
 </header>
     <main>
-  <header>
-    <h1 itemprop="name">Ideas</h1>
-  </header>
+  
+    
+      <style>{{ -}}.hack header figure[itemtype*=ImageObject]{position:relative}.hack header figure[itemtype*=ImageObject] figcaption{position:absolute;bottom:0;right:0;text-align:right;padding:15px;font-style:oblique;font-size:smaller;mix-blend-mode:soft-light}.hack header figure[itemtype*=ImageObject] [itemprop=headline]{font-weight:700}</style>
+    
+  
+  <article itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="name" content="Using a Custom iterator on a Batch">
+<meta itemprop="description" content="What I figured from writing a Custom Iterator for a Batch Job"><meta itemprop="datePublished" content="2022-05-14T10:49:09&#43;12:00" />
+<meta itemprop="dateModified" content="2022-05-14T10:49:09&#43;12:00" />
+<meta itemprop="wordCount" content="429"><meta itemprop="image" content="https://source.unsplash.com/collection/983219/1600x900">
+<meta itemprop="keywords" content="Apex,Batch Class,Custom Iterator," />
+    <header>
+      <h1 itemprop="headline name">Using a Custom iterator on a Batch</h1>
+      <p class="muted">
+        <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <circle cx="16" cy="16" r="14" />
+  <path d="M16 8 L16 16 20 20" />
+</svg>
+<span>3 minute read</span>
+<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+</svg>
+
+  Published: <time datetime="2022-05-14T10:49:09&#43;12:00">14 May, 2022</time>
+
+
+      </p>
+      
+        <blockquote itemprop="description">What I figured from writing a Custom Iterator for a Batch Job</blockquote>
+      
+      
+
+
+
+    </header>
+    
+
+    <div itemprop="articleBody">
+      <p>tl; dr: There are always creative ways to leverage tools; this mostly comes from experience.
+Custom Iterators take a bit to wrap your head around, but at its simplest, there is an Iterator and there is an Iterable.
+The Iterable feeds in the list that allows the iterator to pick out the next grouping.</p>
+<p><strong>Learnings</strong></p>
+<ol>
+<li>The trick is to start with the iterating element; Eg: in a batch on a list of Accounts, the element is Account</li>
+<li>Creatively use constructors to help define behaviors in various situations</li>
+<li>Think about what the unit of processing is for you; if we are looking at working on a list as a unit, then the element should somehow contain that list</li>
+<li>Biggest learning, in a batch if you find it difficult to come from the detail and group, see if you cna come from the top and query in execute to group.</li>
+</ol>
+<h3 id="background-references">Background References</h3>
+<p>The requirement was to identify failures in a row for each test type for collections across a date range, for a given entity.</p>
+<p>This can be imagined as a three level problem. This means that the grouping has to occur at three levels. When building out the data from the lowest level, it means we would have to have a custom iterator and custom iteration to support the grouping.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsecutiveItemFailureBatch</span><span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BusinessFinder</span> <span class="kd">implements</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">BusinessTestQuality</span><span class="o">&gt;{</span><span class="c1">//this is our iterator
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">BusinessTestQuality</span><span class="o">&gt;</span> <span class="n">completeSet</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">key</span><span class="o">;</span>
+
+       
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">(){</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">//&lt;-- this is being mocked
+</span><span class="c1"></span>        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">BusinessTestQuality</span> <span class="nf">next</span><span class="o">(){</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">BusinessTestQuality</span><span class="o">();</span> <span class="c1">//&lt;-- this is being mocked
+</span><span class="c1"></span>        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BusinessSet</span> <span class="kd">implements</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">BusinessTestQuality</span><span class="o">&gt;</span> <span class="o">{</span>
+
+       <span class="kd">public</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">BusinessTestQuality</span><span class="o">&gt;</span> <span class="nf">iterator</span><span class="o">(){</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">BusinessTestQuality</span><span class="o">&gt;</span> <span class="n">completeSet</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">key</span><span class="o">;</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="n">Item_Quality__c</span> <span class="n">mq</span> <span class="o">:</span>
+            <span class="o">[</span><span class="n">Select</span> <span class="n">id</span><span class="o">,</span> <span class="n">Name</span><span class="o">,</span> <span class="n">Collection_Pickup_Date__c</span><span class="o">,</span> <span class="n">Test_Result_Numeric__c</span><span class="o">,</span> <span class="n">Business_No__r</span><span class="o">.</span><span class="na">Id</span><span class="o">,</span> <span class="n">DA_Consecutive_Test_Failure__c</span>  
+            <span class="n">from</span> <span class="n">Item_Quality__c</span>
+            <span class="nf">where</span>
+            <span class="o">(</span><span class="n">Collection_Pickup_Date__c</span> <span class="o">=</span> <span class="n">LAST_N_DAYS</span><span class="o">:</span><span class="n">7</span> <span class="nf">and</span> <span class="o">(</span><span class="n">Name</span> <span class="o">=</span> <span class="o">:</span><span class="n">Test1</span> <span class="n">OR</span>
+            <span class="n">Name</span> <span class="o">=</span> <span class="o">:</span><span class="n">Test3</span><span class="o">))</span>
+            <span class="n">OR</span>
+            <span class="o">(</span><span class="n">Name</span> <span class="o">=</span> <span class="o">:</span><span class="n">Test2</span> <span class="n">and</span> <span class="n">Collection_Pickup_Date__c</span> <span class="o">=</span> <span class="n">LAST_N_DAYS</span><span class="o">:</span><span class="n">10</span><span class="o">)</span>
+            <span class="n">order</span> <span class="n">by</span> <span class="n">Collection_Pickup_Date__c</span> <span class="n">asc</span><span class="o">]){</span>
+
+                <span class="n">key</span> <span class="o">=</span> <span class="n">mq</span><span class="o">.</span><span class="na">Name</span> <span class="o">+</span> <span class="sc">&#39;-&#39;</span> <span class="o">+</span> <span class="n">mq</span><span class="o">.</span><span class="na">Business_No__r</span><span class="o">.</span><span class="na">Id</span><span class="o">;</span>
+
+                <span class="k">if</span> <span class="o">(</span><span class="n">completeSet</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                    <span class="n">BusinessTestQuality</span> <span class="n">ftq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BusinessTestQuality</span><span class="o">(</span><span class="n">mq</span><span class="o">);</span>
+                    <span class="n">completeSet</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span><span class="n">ftq</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">completeSet</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">mq</span><span class="o">);</span>
+                <span class="o">}</span>
+
+            <span class="o">}</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="n">BusinessFinder</span><span class="o">();</span> <span class="c1">//this needs to be replaced.
+</span><span class="c1"></span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BusinessTestQuality</span><span class="o">{</span> <span class="c1">// This is the stuff that is holding the grouping
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Item_Quality__c</span><span class="o">&gt;</span> <span class="n">ItemQualities</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">Business</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">test</span><span class="o">;</span>
+        <span class="n">Integer</span> <span class="n">count</span><span class="o">;</span>
+
+        <span class="c1">//How do we create this bugger?
+</span><span class="c1"></span>
+        <span class="kd">public</span> <span class="nf">BusinessTestQuality</span><span class="o">(){}</span>
+
+        <span class="kd">public</span> <span class="nf">BusinessTestQuality</span><span class="o">(</span><span class="n">Item_Quality__c</span> <span class="n">ItemQuality</span><span class="o">){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">Business</span> <span class="o">=</span> <span class="n">ItemQuality</span><span class="o">.</span><span class="na">Business_No__c</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">test</span> <span class="o">=</span> <span class="n">ItemQuality</span><span class="o">.</span><span class="na">Name</span><span class="o">;</span> <span class="c1">//this may have to change to be the test itself. but this should suffice for now.
+</span><span class="c1"></span>            <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">ItemQualities</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ItemQuality</span><span class="o">);</span>
+        <span class="o">}</span> <span class="c1">//we expect a Item quality every single time
+</span><span class="c1"></span>       
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">collect</span><span class="o">(</span><span class="n">Item_Quality__c</span> <span class="n">ItemQuality</span><span class="o">){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">ItemQualities</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ItemQuality</span><span class="o">);</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">count</span><span class="o">++;</span>
+            <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">Business</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">Business</span> <span class="o">=</span> <span class="n">ItemQuality</span><span class="o">.</span><span class="na">Business_No__c</span><span class="o">;</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">test</span> <span class="o">=</span> <span class="n">ItemQuality</span><span class="o">.</span><span class="na">Name</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+    </div>
+    <footer>
+      <hr>
+      <p>
+  Published
+  
+  <time itemprop="datePublished" datetime="2022-05-14T10:49:09&#43;12:00">
+    14 May, 2022
+  </time>
+  
+    in <span itemprop="articleSection"><a href="/categories/salesforce/">Salesforce</a></span>
   
   
+    and tagged <a rel="tag" href="/tags/apex/">Apex</a>, <a rel="tag" href="/tags/batch-class/">Batch Class</a> and <a rel="tag" href="/tags/custom-iterator/">Custom Iterator</a>
   
+  using <span itemprop="wordCount">429</span> words.
+</p>
+
+      
+
+
+
+  
+    <aside>
+      <header>Related Content</header>
+      
+        <ul>
+          
+            <li><a href="/sf/future-methods/">Future Methods</a>
+            <time class="muted" datetime="3M">3 minutes</time>
+          
+            <li><a href="/sf/apex-intro/">Apex Intro</a>
+            <time class="muted" datetime="1M">1 minutes</time>
+          
+        </ul>
+      
+    </aside>
+  
+
+
+    </footer>
+  </article>
 </main>
     <footer>
-  <p><nav>
-  
-  
-    <span>OMG the nostalgia! Runs so smoothly too. If only there were published content.</span>
-  
-  
-</nav>
-</p>
   <small class="muted">
     
   
-    Copyright &copy; prasanthabr. Licensed under <a target="_blank" rel="external noopener license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA-4.0</a>.
+    
+      Copyright &copy; 2022 prasanthabr.
+      
+        Licensed under <a  target="_blank" rel="external noopener license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+      
+    
   
 
 
